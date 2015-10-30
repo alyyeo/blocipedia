@@ -8,7 +8,25 @@
 </head>
 <body>
 
-<%= yield %>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to "Blocipedia", root_path, class: 'brand-logo' %>
+      <ul id="nav-mobile" class="right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          Signed in as: <%= current_user.email %>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container">  
+    <%= yield %>
+  </div>
 
 </body>
 </html>

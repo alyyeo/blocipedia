@@ -1,0 +1,15 @@
+<h2>All Wikis</h2>
+
+<%= link_to "Create a Wiki", new_wiki_path, class: 'btn waves-effect waves-light' %>
+
+<div class="row">
+    <% @wikis.each do |wiki| %>
+            <div class="col s4">
+                <div class="card blue-grey darken-4">
+                    <div class="card-action">
+                        <%= link_to "#{wiki.title}", wiki, class: 'card-title' %>
+                    </div>
+                </div>
+            </div>
+    <% end %>
+</div>
