@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col s8">
         <h2><%= @wiki.title %></h2>
+        <h5>Created by <%= link_to @wiki.user.name, @wiki.user %></h5>
         <p><%= @wiki.body %></p>
     </div>
     
