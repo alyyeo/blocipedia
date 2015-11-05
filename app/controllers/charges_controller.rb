@@ -13,7 +13,6 @@ class ChargesController < ApplicationController
         )
         
         flash[:notice] = "Thanks for all the money, #{current_user.name}. Feel free to pay me again."
-        current_user.change_role(:premium)
         redirect_to current_user
         
     rescue Stripe::CardError => e

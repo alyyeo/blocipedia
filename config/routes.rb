@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :wikis
   resources :users, only: [:show, :update] do
-    put :to_premium
-    put :to_standard
+    put :change_role
   end
   root 'wikis#index'
 end

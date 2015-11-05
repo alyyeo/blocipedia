@@ -1,10 +1,15 @@
 class WikisController < ApplicationController
     def index
-        @wikis = Wiki.all
+        @wikis = Wiki.visible_to(current_user)
     end
     
     def show
         @wiki = Wiki.find(params[:id])
+        
+        if @wiki.private && current_user.standard?
+            flash[:error] = "You are not authorized to view this wiki"
+            redirect_to root_path
+        end
     end
     
     def new

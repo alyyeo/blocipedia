@@ -25,6 +25,18 @@
     </div>
   </nav>
   
+   <div class="flash">
+    <% if flash[:notice] %>
+      <script>
+        Materialize.toast('<%= flash[:notice] %>', 3000)
+      </script>
+    <% elsif flash[:error] %>
+      <script>
+        Materialize.toast('<%= flash[:error] %>', 3000)
+      </script>
+    <% end %>
+  </div>
+  
   <div class="container">  
     <%= yield %>
   </div>

@@ -21,11 +21,11 @@
             });
         </script>
         <div id="upgrader" style="display:none;">
-            <%= link_to "Upgrade to premium", user_to_premium_path(current_user), method: :put, class: 'btn waves-effect waves-light' %>
+            <%= link_to "Upgrade to premium", user_change_role_path(current_user), method: :put, class: 'btn waves-effect waves-light' %>
         </div>
     <% end %>
 <% elsif current_user.premium? %>
     <h4>Cancel Premium Membership</h4>
-    <%= link_to "I want to return to a standard account", user_to_standard_path(current_user), method: :put, class: "btn red waves-effect waves-light" %>
+    <%= link_to "I want to return to a standard account", user_change_role_path(current_user), method: :put, class: "btn red waves-effect waves-light" %>
 <% end %>    
     

@@ -3,18 +3,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
-  def to_premium
-    change_role(:premium)
-  end
-  
-  def to_standard
-    change_role(:standard)
-  end
-  
-  def change_role(new_role)
+  def change_role
     @user = User.find(params[:user_id])
     # @user.update_attributes!(role: new_role)
-    new_role == :premium ? @user.premium! : @user.standard!
+    if @user.standard?
+      @user.premium!
+    else
+      @user.standard!
+      @user.wikis.where(private: true).each do |wiki|
+        wiki.update_attributes!(private: false)
+      end
+    end
+    
     redirect_to edit_user_registration_path
   end
 end

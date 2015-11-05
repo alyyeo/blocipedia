@@ -7,10 +7,12 @@
         <%= f.text_area :body, class: 'materialize-textarea' %>
         <%= f.label :body %>
     </div>
-    <div class="input-field">
-        <%= f.check_box :private %>
-        <%= f.label :private %>
-    </div>
+    <% if current_user.admin? || current_user.premium? %>
+        <div class="input-field">
+            <%= f.check_box :private %>
+            <%= f.label :private %>
+        </div>
+    <% end %>
     <div id="save-position">
         <%= f.submit "Save", class: 'btn waves-effect waves-light' %>
     </div>
