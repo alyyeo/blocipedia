@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  after_initialize { self.role = :standard}
          
   has_many :wikis
   

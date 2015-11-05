@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030225124) do
+ActiveRecord::Schema.define(version: 20151102172504) do
+
+  create_table "amounts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -30,7 +35,7 @@ ActiveRecord::Schema.define(version: 20151030225124) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "role"
+    t.integer  "role",                   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
